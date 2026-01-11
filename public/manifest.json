@@ -1,12 +1,43 @@
 {
   "manifest_version": 3,
-  "name": "My Vite React Extension",
-  "description": "A browser extension built with Vite and React",
+  "name": "Smart Search Extension",
   "version": "1.0.0",
-
+  "description": "Search for words and their similar variants on any webpage",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
   "action": {
-    "default_title": "Vite React Extension",
-    "default_popup": "index.html"
-  }
-
-  }
+    "default_title": "Smart Search (Ctrl+Shift+F)"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["searchbar.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "commands": {
+    "trigger-search": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "Command+Shift+F"
+      },
+      "description": "Open smart search bar"
+    }
+  },
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ]
+}
