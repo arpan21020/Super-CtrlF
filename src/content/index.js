@@ -180,7 +180,7 @@ async function getSimilarWords(word) {
   
   // OPTION 2: Your custom API
   // Uncomment and modify this section to use your own API
-  const _KEY = "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";
+  const _KEY = "";
   const GROQ_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct";
 
   const YOUR_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
